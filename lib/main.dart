@@ -34,12 +34,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  
   int count = 0;
   int _first_num = 0;
   int _second_num = 0;
   @override
   Widget build(BuildContext context) {
     print(count);
+    // number generator
     const List<List<List<int>>> digits = [
       [
         [0, 1, 1, 1, 0],
@@ -134,34 +136,38 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
 
     return Scaffold(
-        appBar: _MyAppbar(),
+        appBar: MyAppbar(),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            MoveNumber(1),
-            Container(
-              width: 600.0,
-              height: 450.0,
-              decoration: BoxDecoration(
-                  color: Colors.black,
-                  border: Border.all(color: Colors.white, width: 15.0)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildDigit(digits, _first_num),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  _buildDigit(digits, _second_num),
-                ],
-              ),
-            ),
-            MoveNumber(0),
+            _shiftNumber(1),
+            BordNumber(digits),
+            _shiftNumber(0),
           ],
         ));
   }
 
-  AppBar _MyAppbar() {
+  Container BordNumber(List<List<List<int>>> digits) {
+    return Container(
+            width: 600.0,
+            height: 450.0,
+            decoration: BoxDecoration(
+                color: Colors.black,
+                border: Border.all(color: Colors.white, width: 15.0)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildDigit(digits, _first_num),
+                SizedBox(
+                  width: 50,
+                ),
+                _buildDigit(digits, _second_num),
+              ],
+            ),
+          );
+  }
+
+  AppBar MyAppbar() {
     return AppBar(
       backgroundColor: Colors.deepPurple,
       title: Center(
@@ -204,7 +210,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget MoveNumber(int increase) {
+  Widget _shiftNumber(int increase) {
     Icon icon = increase == 1
         ? Icon(
             Icons.arrow_drop_up,
