@@ -34,7 +34,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
   int count = 0;
   int _first_num = 0;
   int _second_num = 0;
@@ -149,22 +148,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Container BordNumber(List<List<List<int>>> digits) {
     return Container(
-            width: 600.0,
-            height: 450.0,
-            decoration: BoxDecoration(
-                color: Colors.black,
-                border: Border.all(color: Colors.white, width: 15.0)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildDigit(digits, _first_num),
-                SizedBox(
-                  width: 50,
-                ),
-                _buildDigit(digits, _second_num),
-              ],
-            ),
-          );
+      width: 600.0,
+      height: 450.0,
+      decoration: BoxDecoration(
+          color: Colors.black,
+          border: Border.all(color: Colors.white, width: 15.0)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _buildDigit(digits, _first_num),
+          SizedBox(
+            width: 50,
+          ),
+          _buildDigit(digits, _second_num),
+        ],
+      ),
+    );
   }
 
   AppBar MyAppbar() {
